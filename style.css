@@ -3,6 +3,22 @@
 =================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Do+Hyeon&display=swap');
 
+/* Mona font (local) */
+@font-face {
+  font-family: 'MonaTextKR';
+  src: url('fonts/Mona12TextKR.otf') format('opentype'),
+    url('fonts/Mona12TextKR.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonaTextKR';
+  src: url('fonts/Mona12-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 /* ── Variables ─────────────────────────────────── */
 :root {
   --hot: #FF69B4;
@@ -796,30 +812,33 @@ body::before {
 }
 
 .letter-to {
-  font-family: 'Nanum Pen Script', cursive;
-  font-size: 1.25rem;
+  font-family: 'MonaTextKR', 'Nanum Pen Script', cursive;
+  font-size: 1rem;
   color: var(--deep);
   padding-left: 46px;
   border-bottom: 1px dashed var(--baby);
   padding-bottom: 10px;
+  letter-spacing: .04em;
 }
 
 .letter-body {
-  font-family: 'Nanum Pen Script', cursive;
-  font-size: 1.2rem;
+  font-family: 'MonaTextKR', 'Nanum Pen Script', cursive;
+  font-size: .95rem;
   color: #5a2040;
-  line-height: 1.95;
+  line-height: 2.05;
   padding-left: 46px;
   word-break: keep-all;
+  letter-spacing: .03em;
 }
 
 .letter-from {
-  font-family: 'Nanum Pen Script', cursive;
-  font-size: 1.15rem;
+  font-family: 'MonaTextKR', 'Nanum Pen Script', cursive;
+  font-size: .95rem;
   color: var(--deep);
   text-align: right;
   padding-top: 8px;
   border-top: 1px dashed var(--baby);
+  letter-spacing: .04em;
 }
 
 /* Music section */
