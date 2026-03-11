@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>💌 밍예리 하우스 집들이 초대장</title>
+  <meta name="description" content="밍예리 하우스 집들이 초대장 — 당신도 초대받으셨나요?" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Do+Hyeon&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Floating particles background -->
+  <div id="particles"></div>
+
+  <!-- ══════════════════════════════
+       SCENE 0 · OPENING ENVELOPE
+  ══════════════════════════════ -->
+  <section id="s0" class="scene active">
+    <div class="opening-wrap">
+
+      <!-- Card that pops out (positioned above envelope) -->
+      <div id="riseCard" class="rise-card">
+        <p class="rise-card-emoji">💌</p>
+        <p class="rise-card-text">초대장이<br>도착했어요!</p>
+        <p class="rise-card-emoji">🌸</p>
+      </div>
+
+      <!-- The envelope (clean, no card inside) -->
+      <div id="envelopeBox" class="envelope-box" onclick="openEnvelope()">
+        <!-- flap -->
+        <div id="envFlap" class="env-flap"></div>
+        <!-- body overlay triangles -->
+        <div class="env-fold-left"></div>
+        <div class="env-fold-right"></div>
+        <div class="env-fold-bottom"></div>
+
+        <!-- Ribbon (horizontal band + vertical band crossing) -->
+        <div class="env-ribbon-h" id="ribbonH"></div>
+        <div class="env-ribbon-v" id="ribbonV"></div>
+        <!-- Bow knot in center -->
+        <div class="env-bow" id="envBow">
+          <div class="bow-loop bow-left"></div>
+          <div class="bow-knot">🩷</div>
+          <div class="bow-loop bow-right"></div>
+        </div>
+      </div>
+
+      <p id="tapHint" class="tap-hint">✨ 터치해서 열어보세요 ✨</p>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       SCENE 1 · NAME INPUT
+  ══════════════════════════════ -->
+  <section id="s1" class="scene">
+    <div class="page-wrap">
+      <div class="deco-row">⭐ 💖 ⭐</div>
+      <div class="card">
+        <div class="card-wand">🌟</div>
+        <h1 class="card-title">밍예리 하우스<br>집들이 초대장</h1>
+        <p class="card-sub">당신은 초대받으셨나요? 🎀</p>
+        <div class="divider">♡ ♡ ♡</div>
+        <label class="input-label" for="nameInput">성을 제외한 이름을 입력해주세요</label>
+        <div class="input-row">
+          <input id="nameInput" class="name-input" type="text" placeholder="예) 예리나" maxlength="5" autocomplete="off" />
+          <span class="input-icon">🌸</span>
+        </div>
+        <div id="errorBox" class="error-box hidden"></div>
+        <button id="confirmBtn" class="btn-confirm" onclick="checkName()">확인하기 💖</button>
+      </div>
+      <div class="deco-row">🌸 💐 🌸</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       SCENE 2 · ACCEPT / DECLINE
+  ══════════════════════════════ -->
+  <section id="s2" class="scene">
+    <div class="page-wrap">
+      <div class="card invite-card">
+        <div class="deco-row">✨ 💕 ✨</div>
+        <div class="crown">👑</div>
+        <h2>
+          <sapn>💌</sapn>
+          <span class="invite-name" id="inviteName"></span>
+        </h2>
+        <p class="invite-body">저희 <strong>밍예리 하우스</strong>에<br>초대합니다! 🏠💕</p>
+        <p class="invite-inst">초대에 응하시면 <strong>O</strong>, 아니면 <strong>X</strong> 버튼을 눌러주세요</p>
+        <div id="declineMsg" class="decline-msg"></div>
+        <div class="ox-row" id="oxRow">
+          <button class="btn-o" onclick="handleAccept()">O</button>
+          <button class="btn-x" id="btnX" onclick="handleDecline()">X</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       SCENE 3 · LETTER + MUSIC
+  ══════════════════════════════ -->
+  <section id="s3" class="scene">
+    <div id="confettiArea" class="confetti-area"></div>
+    <div class="page-wrap">
+      <div class="card letter-card">
+        <div class="deco-row">🎉 🎊 🎉</div>
+        <h2 class="letter-title" id="letterTitle"></h2>
+        <!-- <p class="letter-sub">꼭 와주시기 바랍니다 💌</p> -->
+
+        <!-- 텍스트 손편지 -->
+        <div class="letter-paper">
+          <div class="letter-stamp">💌</div>
+          <p class="letter-to" id="letterTo"></p>
+          <div class="letter-body" id="letterBody"></div>
+          <p class="letter-from">예리나 드림 🌸</p>
+        </div>
+
+        <div class="music-section">
+          <div class="music-notes">
+            <span class="n1">🎵</span><span class="n2">🎶</span><span class="n3">🎵</span>
+          </div>
+          <p class="music-label">♪ 밍예리 하우스 BGM ♪</p>
+        </div>
+        <!-- YouTube player rendered here -->
+        <div id="ytPlayer"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
