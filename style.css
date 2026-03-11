@@ -366,8 +366,8 @@ body::before {
 /* Card drops DOWN into the open envelope */
 .rise-card.rising {
   opacity: 1;
-  /* drops to -10px: just inside the open flap of the envelope */
-  transform: translateX(-50%) translateY(-10px);
+  /* drops to -95px: halfway between start (-180px) and envelope center */
+  transform: translateX(-50%) translateY(-145px);
 }
 
 .rise-card-emoji {
@@ -912,13 +912,14 @@ body::before {
   letter-spacing: .08em;
 }
 
-/* Hide YouTube player iframe visually but keep it active */
+/* YouTube player: visually hidden but NOT zero-size (0px blocks audio on some mobile browsers) */
 #ytPlayer {
-  width: 0;
-  height: 0;
-  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
   opacity: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 /* ════════════════════════
