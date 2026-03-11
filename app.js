@@ -3,7 +3,7 @@
 =================================================== */
 
 // ── Guest list (성 제외, 이름만) ────────────────
-const GUEST_LIST = ['소향', '우희', '진선', '규원', '가영', '주아', '유진', '상언', '수빈', '정인'];
+const GUEST_LIST = ['소향', '우희', '진선', '규원', '가영', '주아', '유진', '상언', '수빈', '정인', '민규'];
 
 // ── YouTube video ID ─────────────────────────────
 const YT_VIDEO_ID = 'Dt28r9ZDCZo';
@@ -42,6 +42,7 @@ const LETTERS = {
   '상언': ``,
   '수빈': `사랑하고 애정하고 아끼고 소중한 우리 수빈이💖\n귀한 시간 내서 놀러와줘서 너무 고마워!\n그간 우리 수빈이에게 받은 커어다란 사랑을\n조금이나마 따수운 밥으로 같이 나눌수있어서\n넘넘 신나고 기대되고 기뻐용 😄🥰\n먼길 와줘서 너무 고맙고,\n정인이랑 같이 따뜻하고 오래갈 추억 만들자!\n싸랑행 💖\n`,
   '정인': `싸랑하는 정인아!\n너에게 드디어 따수운 밥을 만들어줄수있다니\n감개가 무량하구나.\n먼길 와줘서 너무너무 고맙고,\n따뜻하고 햅삐한 시간 보내자!\n사랑행 💖\n엄청마니💖💖💖`,
+  '민규': `사랑하는 우리 민규💖\n민규가 있어서 밍예리하우스가 늘 반짝반짝 따뜻하게 빛나아✨\n항상 고맙구 너무너무 사랑해💖💖💖💖💖💖💖💖💖💖💖💖`
 };
 
 // 편지 내용이 없을 때 기본 문구
@@ -90,18 +91,18 @@ function openEnvelope() {
     box.classList.add('opened');
   }, 700);
 
-  // 3) Rise-card pops up from envelope (1400ms)
+  // 3) Card drops DOWN into open envelope (1400ms)
   setTimeout(() => {
     riseCard.classList.add('rising');
   }, 1400);
 
-  // 4) Fade scene and go to page 1 (2800ms)
+  // 4) Fade scene and go to page 1 (3200ms — card lands at ~2300ms, hold briefly)
   setTimeout(() => {
     document.getElementById('s0').style.transition = 'opacity .6s ease';
     showScene('s1');
     initParticles();
     document.getElementById('nameInput').focus();
-  }, 2800);
+  }, 3200);
 }
 
 // ════════════════════════════════════════════════
